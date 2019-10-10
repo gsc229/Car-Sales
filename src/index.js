@@ -15,7 +15,7 @@ console.log('index.js store', store);
 /* 
   GETTING THINGS CONNECTED:
 0. Add dependencies: yarn add redux react-redux
-1. Reducer 
+1. Build Reducer 
 2. (for index.js(src))
   2.0 import {Provider} from 'react-redux' >> wrap the <App/> inside a redux provider component
   2.1 import {featureReducer} from './reducers' ....(or whatever you named your reducer)
@@ -32,7 +32,7 @@ console.log('index.js store', store);
             rootElement
           );
 
-4. (Repeat this step for appropriate components and thier needed props) In the appropriate component      import {Connect} from 'react-redux' and then, at the bottome of the component, map the                appropriate state you need to the props of that compoent (See <Header />):
+4. (Repeat this step for appropriate components and their needed props) In the appropriate component      import {Connect} from 'react-redux' and then, at the bottom of the component, map the                appropriate state you need to the props of that compoent (See <Header />):
 
           const mapStateToProps = state => {
             return {
