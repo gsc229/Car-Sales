@@ -1,3 +1,6 @@
+// action types:
+import { ADD_FEATURE } from '../actions';
+
 export const initialState = {
   additionalPrice: 0,
   car: {
@@ -5,7 +8,7 @@ export const initialState = {
     name: '2019 Ford Mustang',
     image:
       'https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg',
-    features: [{ id: 1, name: 'seatbelts' }, { id: 2, name: 'windshield' }]
+    features: []
   },
   additionalFeatures: [
     { id: 1, name: 'V-6 engine', price: 1500 },
@@ -14,11 +17,26 @@ export const initialState = {
     { id: 4, name: 'Rear spoiler', price: 250 }
   ]
 };
-
+console.log('featureRucer initialState: ', initialState);
 export const featureReducer = (state = initialState, action) => {
-  console.log('featureReducer actction: ', action);
-  console.log('featureReducer initialState: ', state);
+  console.log('featureReducer state: ', state);
+  console.log('featureReducer action: ', action);
+  console.log('featureReducer action.payload: ', action.payload);
+
   switch (action.type) {
+    case ADD_FEATURE:
+      /* alert('ADD_FEATURE called'); */
+      return {
+        ...state,
+        additionalPrice: state.additionalPrice + action.payload.price,
+        additionalFeatures: [
+          ...state.additionalFeatures.filter(
+            item => item.id !== action.payload.id
+          )
+        ],
+
+        car: { ...state.car, features: [...state.car.features, action.payload] }
+      };
     default:
       return state;
   }

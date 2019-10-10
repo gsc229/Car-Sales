@@ -6,7 +6,8 @@ const AdditionalFeatures = props => {
   console.log('AdditionalFeatures props: ', props);
   return (
     <div className='content'>
-      <h4>Additional Features</h4>
+      <h4>Choose Additional Features:</h4>
+      <p>!need to send an item to Added features:</p>
       {props.store.length ? (
         <ol type='1'>
           {props.store.map(item => (

@@ -8,6 +8,7 @@ const Header = props => {
       </figure>
       <h2>{props.car.name}</h2>
       <p>Amount: ${props.car.price}</p>
+      <p>Addons: ${props.additionalPrice}</p>
     </>
   );
 };
