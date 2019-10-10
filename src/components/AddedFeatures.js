@@ -13,6 +13,7 @@ const AddedFeatures = props => {
           {props.car.features.map(item => (
             <AddedFeature key={item.id} feature={item} />
           ))}
+          <p id='total-addons'>+ Total Addons: ${props.additionalPrice}</p>
         </ol>
       ) : (
         <p>You can purchase items from the store.</p>
@@ -23,7 +24,8 @@ const AddedFeatures = props => {
 
 const mapStateToProps = state => {
   return {
-    car: state.car
+    car: state.car,
+    additionalPrice: state.additionalPrice
   };
 };
 
