@@ -1,12 +1,13 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-const App = () => {
-  const state = {
+const App = props => {
+  console.log('App.js props: ', props);
+  /* const state = {
     additionalPrice: 0,
     car: {
       price: 26395,
@@ -21,7 +22,7 @@ const App = () => {
       { id: 3, name: 'Premium sound system', price: 500 },
       { id: 4, name: 'Rear spoiler', price: 250 }
     ]
-  };
+  }; */
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -32,17 +33,29 @@ const App = () => {
   };
 
   return (
-    <div className="boxes">
-      <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+    <div className='boxes'>
+      <div className='box'>
+        <Header /* car={state.car} */ />
+        <AddedFeatures /* car={state.car} */ />
       </div>
-      <div className="box">
-        <AdditionalFeatures store={state.store} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+      <div className='box'>
+        <AdditionalFeatures /* store={state.store} */ />
+        <Total /* car={state.car} additionalPrice={state.additionalPrice} */ />
       </div>
     </div>
   );
 };
+/* !!!! note sure if i'm supposed to connect the app to the store */
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    additionalPrice: state.additionalPrice,
+    car: state.car,
+    additionalFeatures: state.AdditionalFeatures
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(App);

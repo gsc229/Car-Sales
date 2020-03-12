@@ -1,16 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import AddedFeature from './AddedFeature';
 
 const AddedFeatures = props => {
+  console.log('AddedFeaturSSS.js props: ', props);
   return (
-    <div className="content">
+    <div className='content'>
       <h6>Added features:</h6>
       {props.car.features.length ? (
-        <ol type="1">
+        <ol type='1'>
           {props.car.features.map(item => (
             <AddedFeature key={item.id} feature={item} />
           ))}
+          <p id='total-addons'>+ Total Addons: ${props.additionalPrice}</p>
         </ol>
       ) : (
         <p>You can purchase items from the store.</p>
@@ -19,4 +22,14 @@ const AddedFeatures = props => {
   );
 };
 
-export default AddedFeatures;
+const mapStateToProps = state => {
+  return {
+    car: state.car,
+    additionalPrice: state.additionalPrice
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(AddedFeatures);
